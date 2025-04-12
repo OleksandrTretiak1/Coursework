@@ -5,8 +5,20 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Курсова_робота"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="ReServant - Чат-бот" Height="450" Width="400">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <!-- Поле для відображення чату -->
+        <ListBox Name="ChatHistory" Grid.Row="0" Margin="10"/>
+
+        <!-- Панель введення повідомлення -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
+            <TextBox Name="UserInput" Width="280" Height="30" VerticalAlignment="Center"/>
+            <Button Name="SendButton" Content="Відправити" Width="80" Height="30" Margin="5,0,0,0" Click="SendButton_Click"/>
+        </StackPanel>
     </Grid>
 </Window>
