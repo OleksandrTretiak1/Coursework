@@ -36,12 +36,15 @@ namespace Курсова_робота
         public MainWindow()
         {
             InitializeComponent();
-            UserInput.Text = "Напишіть своє повідомлення тут...";
+
+            ChatHistory.Items.Add("Бот: Доброго дня, чим я можу вам допомогти? 😊");
+
+            UserInput.Text = "Запитайте будь-що";
             UserInput.Foreground = Brushes.Gray;
 
             UserInput.GotFocus += (s, e) =>
             {
-                if (UserInput.Text == "Напишіть своє повідомлення тут...")
+                if (UserInput.Text == "Запитайте будь-що")
                 {
                     UserInput.Text = "";
                     UserInput.Foreground = Brushes.Black;
@@ -52,7 +55,7 @@ namespace Курсова_робота
             {
                 if (string.IsNullOrWhiteSpace(UserInput.Text))
                 {
-                    UserInput.Text = "Напишіть своє повідомлення тут...";
+                    UserInput.Text = "Запитайте будь-що";
                     UserInput.Foreground = Brushes.Gray;
                 }
             };
@@ -68,7 +71,7 @@ namespace Курсова_робота
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
-            if (UserInput.Text == "Напишіть своє повідомлення тут..." || string.IsNullOrWhiteSpace(UserInput.Text))
+            if (UserInput.Text == "Запитайте будь-що" || string.IsNullOrWhiteSpace(UserInput.Text))
             {
                 return; // Ігноруємо натискання кнопки, якщо поле містить підказку або пусте
             }
@@ -80,7 +83,7 @@ namespace Курсова_робота
         {
             if (e.Key == Key.Enter)
             {
-                if (UserInput.Text == "Напишіть своє повідомлення тут..." || string.IsNullOrWhiteSpace(UserInput.Text))
+                if (UserInput.Text == "Запитайте будь-що" || string.IsNullOrWhiteSpace(UserInput.Text))
                 {
                     return; // Ігноруємо Enter, якщо користувач нічого не ввів або залишив стандартний текст
                 }
@@ -89,15 +92,24 @@ namespace Курсова_робота
             }
         }
 
-        private void ProcessUserMessage()
+        private async void ProcessUserMessage()
         {
             string userMessage = UserInput.Text.Trim();
             if (!string.IsNullOrEmpty(userMessage))
             {
                 ChatHistory.Items.Add($"Ви: {userMessage}");
-                string botResponse = GetResponse(userMessage);
-                ChatHistory.Items.Add($"Бот: {botResponse}");
                 UserInput.Clear();
+
+                string botResponse = GetResponse(userMessage);
+                int botMessageIndex = ChatHistory.Items.Add("Бот: ");
+
+                string currentText = "Бот: ";
+                foreach (char letter in botResponse)
+                {
+                    await Task.Delay(50);
+                    currentText += letter;
+                    ChatHistory.Items[botMessageIndex] = currentText; // Оновлюємо елемент у ListBox
+                }
             }
         }
 
