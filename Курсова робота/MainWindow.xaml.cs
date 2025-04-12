@@ -32,11 +32,27 @@ namespace Курсова_робота
             { "wi-fi", "Так, у нашому готелі доступний безкоштовний Wi-Fi. 📶" },
             { "кондиціонер", "Так, всі наші номери оснащені кондиціонерами. ❄️" }
         };
+
         public MainWindow()
         {
             InitializeComponent();
+            UserInput.KeyDown += UserInput_KeyDown;
         }
+
         private void SendButton_Click(object sender, RoutedEventArgs e)
+        {
+            ProcessUserMessage();
+        }
+
+        private void UserInput_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.Key == Key.Enter)
+            {
+                ProcessUserMessage();
+            }
+        }
+
+        private void ProcessUserMessage()
         {
             string userMessage = UserInput.Text.Trim();
             if (!string.IsNullOrEmpty(userMessage))
@@ -60,5 +76,6 @@ namespace Курсова_робота
             }
             return "Вибачте, я не розумію запитання. 🤔";
         }
+
     }
 }

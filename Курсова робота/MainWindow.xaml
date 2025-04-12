@@ -5,20 +5,59 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Курсова_робота"
         mc:Ignorable="d"
-        Title="ReServant - Чат-бот" Height="450" Width="400">
-    <Grid>
+        Title="Чат-бот готелю" Height="500" Width="400">
+    <Grid Margin="10">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
         <!-- Поле для відображення чату -->
-        <ListBox Name="ChatHistory" Grid.Row="0" Margin="10"/>
+        <ListBox Name="ChatHistory" Grid.Row="0" Margin="0,0,0,10"/>
 
-        <!-- Панель введення повідомлення -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" Margin="10">
-            <TextBox Name="UserInput" Width="280" Height="30" VerticalAlignment="Center"/>
-            <Button Name="SendButton" Content="Відправити" Width="80" Height="30" Margin="5,0,0,0" Click="SendButton_Click"/>
-        </StackPanel>
+        <!-- Поле вводу + кнопка -->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <!-- Поле вводу займає всю доступну ширину -->
+                <ColumnDefinition Width="Auto" />
+                <!-- Кнопка займає мінімум місця -->
+            </Grid.ColumnDefinitions>
+
+            <TextBox Name="UserInput" Height="40" FontSize="14" Padding="5" Grid.Column="0" />
+
+            <Button Name="SendButton" Content="➤" Width="50" Height="40" Click="SendButton_Click" Grid.Column="1" 
+                    Margin="10,0,0,0">
+                <!-- Додаємо відступ зліва -->
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="5">
+                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="Background" Value="#0078D7"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="FontSize" Value="18"/>
+                        <Setter Property="BorderThickness" Value="0"/>
+                        <Setter Property="Effect">
+                            <Setter.Value>
+                                <DropShadowEffect Color="Black" Opacity="0.3" BlurRadius="5"/>
+                            </Setter.Value>
+                        </Setter>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#005A9E"/>
+                            </Trigger>
+                            <Trigger Property="IsPressed" Value="True">
+                                <Setter Property="Background" Value="#004377"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+            </Button>
+        </Grid>
     </Grid>
 </Window>
