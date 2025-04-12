@@ -5,6 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Курсова_робота"
         mc:Ignorable="d"
+        SizeChanged="Window_SizeChanged"
         Title="Чат-бот готелю" Height="500" Width="400">
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -13,7 +14,14 @@
         </Grid.RowDefinitions>
 
         <!-- Поле для відображення чату -->
-        <ListBox Name="ChatHistory" Grid.Row="0" Margin="0,0,0,10"/>
+        <ListBox Name="ChatHistory" Grid.Row="0" Margin="0,0,0,10">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{Binding}" FontSize="{Binding ElementName=ChatHistory, Path=Tag}" 
+                       TextWrapping="Wrap"/>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
 
         <!-- Поле вводу + кнопка -->
         <Grid Grid.Row="1">

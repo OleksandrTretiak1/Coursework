@@ -39,6 +39,12 @@ namespace Курсова_робота
             UserInput.KeyDown += UserInput_KeyDown;
         }
 
+        private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            double newFontSize = Math.Max(12, this.ActualHeight / 40); 
+            ChatHistory.Tag = newFontSize;
+        }
+
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
             ProcessUserMessage();
