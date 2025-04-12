@@ -36,6 +36,27 @@ namespace Курсова_робота
         public MainWindow()
         {
             InitializeComponent();
+            UserInput.Text = "Напишіть своє повідомлення тут...";
+            UserInput.Foreground = Brushes.Gray;
+
+            UserInput.GotFocus += (s, e) =>
+            {
+                if (UserInput.Text == "Напишіть своє повідомлення тут...")
+                {
+                    UserInput.Text = "";
+                    UserInput.Foreground = Brushes.Black;
+                }
+            };
+
+            UserInput.LostFocus += (s, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(UserInput.Text))
+                {
+                    UserInput.Text = "Напишіть своє повідомлення тут...";
+                    UserInput.Foreground = Brushes.Gray;
+                }
+            };
+
             UserInput.KeyDown += UserInput_KeyDown;
         }
 
@@ -47,6 +68,11 @@ namespace Курсова_робота
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
         {
+            if (UserInput.Text == "Напишіть своє повідомлення тут..." || string.IsNullOrWhiteSpace(UserInput.Text))
+            {
+                return; // Ігноруємо натискання кнопки, якщо поле містить підказку або пусте
+            }
+
             ProcessUserMessage();
         }
 
@@ -54,6 +80,11 @@ namespace Курсова_робота
         {
             if (e.Key == Key.Enter)
             {
+                if (UserInput.Text == "Напишіть своє повідомлення тут..." || string.IsNullOrWhiteSpace(UserInput.Text))
+                {
+                    return; // Ігноруємо Enter, якщо користувач нічого не ввів або залишив стандартний текст
+                }
+
                 ProcessUserMessage();
             }
         }
