@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
 
 namespace Курсова_робота
 {
@@ -42,7 +43,7 @@ namespace Курсова_робота
         {
             InitializeComponent();
 
-            ChatHistory.Items.Add("Бот: Доброго дня, чим я можу вам допомогти? 😊");
+            ChatHistory.Items.Add("Бот: Доброго дня, чим я можу вам допомогти?😀");
 
             UserInput.Text = "Запитайте будь-що";
             UserInput.Foreground = Brushes.Gray;
@@ -119,7 +120,30 @@ namespace Курсова_робота
                 }
             }
         }
+        private void SaveChatHistory_Click(object sender, RoutedEventArgs e)
+        {
+            File.WriteAllLines("chat_history.txt", ChatHistory.Items.Cast<string>());
+        }
+
+        private void LoadChatHistory_Click(object sender, RoutedEventArgs e)
+        {
+            if (File.Exists("chat_history.txt"))
+            {
+                ChatHistory.Items.Clear();
+                foreach (var line in File.ReadAllLines("chat_history.txt"))
+                {
+                    ChatHistory.Items.Add(line);
+                }
+            }
+        }
+
+        private void ClearChatHistory_Click(object sender, RoutedEventArgs e)
+        {
+            ChatHistory.Items.Clear();
+            ChatHistory.Items.Add("Бот: Доброго дня, чим я можу вам допомогти?😀");
+        }
     }
+
     public class BotResponse
     {
         public virtual string GetResponse(string message)
