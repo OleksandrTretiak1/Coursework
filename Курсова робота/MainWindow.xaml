@@ -6,15 +6,29 @@
         xmlns:local="clr-namespace:Курсова_робота"
         mc:Ignorable="d"
         SizeChanged="Window_SizeChanged"
-        Title="Чат-бот готелю" Height="500" Width="400">
+        Title="Чат-бот готелю" Height="500" Width="400"
+        Background="{DynamicResource BackgroundBrush}">
+
+    <Window.Resources>
+        <SolidColorBrush x:Key="BackgroundBrush" Color="White"/>
+        <SolidColorBrush x:Key="ForegroundBrush" Color="Black"/>
+    </Window.Resources>
+    
     <Grid Margin="10">
         <Grid.RowDefinitions>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="4*"/>
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <!-- Кнопка перемикання теми -->
+        <Button Name="ThemeToggleButton" Content="🌙" Width="40" Height="40" Click="ThemeToggleButton_Click"
+                HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,0,10,5"
+                Background="Transparent" BorderThickness="0" Foreground="{DynamicResource ForegroundBrush}"/>
+
         <!-- Поле для відображення чату -->
-        <ListBox Name="ChatHistory" Grid.Row="0" Margin="0,0,0,10">
+        <ListBox Name="ChatHistory" Grid.Row="1" Margin="0,5,0,10"
+             Background="{DynamicResource BackgroundBrush}" Foreground="{DynamicResource ForegroundBrush}">
             <ListBox.ItemTemplate>
                 <DataTemplate>
                     <TextBlock Text="{Binding}" FontSize="{Binding ElementName=ChatHistory, Path=Tag}" 
@@ -24,12 +38,10 @@
         </ListBox>
 
         <!-- Поле вводу + кнопка -->
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="2" Margin="0,5,0,0">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
-                <!-- Поле вводу займає всю доступну ширину -->
                 <ColumnDefinition Width="Auto" />
-                <!-- Кнопка займає мінімум місця -->
             </Grid.ColumnDefinitions>
 
             <TextBox Name="UserInput" Height="40" FontSize="14" Padding="10"
@@ -56,7 +68,6 @@
 
             <Button Name="SendButton" Content="➤" Width="50" Height="40" Click="SendButton_Click" Grid.Column="1" 
                     Margin="10,0,0,0">
-                <!-- Додаємо відступ зліва -->
                 <Button.Template>
                     <ControlTemplate TargetType="Button">
                         <Border Background="{TemplateBinding Background}" CornerRadius="20" Padding="5">

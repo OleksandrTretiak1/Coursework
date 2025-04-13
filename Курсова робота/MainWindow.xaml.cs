@@ -17,6 +17,26 @@ namespace Курсова_робота
 {
     public partial class MainWindow : Window
     {
+        private bool isDarkMode = false;
+
+        private void ThemeToggleButton_Click(object sender, RoutedEventArgs e)
+        {
+            isDarkMode = !isDarkMode;
+
+            if (isDarkMode)
+            {
+                Resources["BackgroundBrush"] = new SolidColorBrush(Color.FromRgb(34, 34, 34));
+                Resources["ForegroundBrush"] = new SolidColorBrush(Color.FromRgb(255, 255, 255)); 
+                ThemeToggleButton.Content = "☀️";
+            }
+            else
+            {
+                Resources["BackgroundBrush"] = new SolidColorBrush(Color.FromRgb(255, 255, 255)); 
+                Resources["ForegroundBrush"] = new SolidColorBrush(Color.FromRgb(0, 0, 0)); 
+                ThemeToggleButton.Content = "🌙";
+            }
+        }
+
         private BotResponse botResponse = new EmojiResponse();
         public MainWindow()
         {
