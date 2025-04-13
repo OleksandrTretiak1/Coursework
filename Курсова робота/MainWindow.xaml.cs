@@ -67,6 +67,8 @@ namespace Курсова_робота
             };
 
             UserInput.KeyDown += UserInput_KeyDown;
+
+            //Loaded += (s, e) => UserInput.Focus(); Якщо нада відразу активувать діалог
         }
 
 
