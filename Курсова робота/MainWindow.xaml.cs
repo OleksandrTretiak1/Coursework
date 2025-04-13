@@ -75,6 +75,15 @@ namespace Курсова_робота
         {
             double newFontSize = Math.Max(12, this.ActualHeight / 40);
             ChatHistory.Tag = newFontSize;
+
+            foreach (var item in FindVisualChildren<Button>(this))
+            {
+                if (item.Name != "ThemeToggleButton")
+                {
+                    item.FontSize = newFontSize;
+                    item.MinWidth = Math.Max(80, this.ActualWidth / 10);
+                }
+            }
         }
 
         private void SendButton_Click(object sender, RoutedEventArgs e)
@@ -141,6 +150,27 @@ namespace Курсова_робота
         {
             ChatHistory.Items.Clear();
             ChatHistory.Items.Add("Бот: Доброго дня, чим я можу вам допомогти?😀");
+        }
+
+        // Допоміжний метод для знаходження всіх кнопок у вікні
+        private static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child is T variable)
+                    {
+                        yield return variable;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
         }
     }
 
