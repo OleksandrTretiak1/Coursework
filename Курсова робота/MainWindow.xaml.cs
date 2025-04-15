@@ -19,7 +19,8 @@ namespace Курсова_робота
     public partial class MainWindow : Window
     {
         private bool isDarkMode = false;
-
+        private int messageCount = 0;
+        private JokeResponse jokeBot = new JokeResponse();
         private void ThemeToggleButton_Click(object sender, RoutedEventArgs e)
         {
             isDarkMode = !isDarkMode;
@@ -38,7 +39,7 @@ namespace Курсова_робота
             }
         }
 
-        private BotResponse botResponse = new EmojiResponse();
+        private BotResponse botResponse = new CombinedResponse();
         public MainWindow()
         {
             InitializeComponent();
@@ -119,11 +120,19 @@ namespace Курсова_робота
                 ChatHistory.Items.Add($"Ви: {userMessage}");
                 UserInput.Clear();
 
-                string botResponseText = botResponse.GetResponse(userMessage);
+                string response = botResponse.GetResponse(userMessage);
+
+                messageCount++;
+                if (messageCount % 3 == 0)
+                {
+                    string joke = jokeBot.GetResponse("жарт");
+                    response += "\nДо речі, ось вам жарт: " + joke;
+                }
+
                 int botMessageIndex = ChatHistory.Items.Add("Бот: ");
 
                 string currentText = "Бот: ";
-                foreach (char letter in botResponseText)
+                foreach (char letter in response)
                 {
                     await Task.Delay(50);
                     currentText += letter;
@@ -212,6 +221,47 @@ namespace Курсова_робота
                 }
             }
             return base.GetResponse(message);
+        }
+    }
+    public class JokeResponse : BotResponse
+    {
+        private List<string> jokes = new List<string>
+        {
+             "Чому комп'ютер не може схуднути? Бо він завжди тримає кеш! 😄" ,
+             "ІТ-шник зайшов у бар... і побачив 404 – бар не знайдено. 🍻" ,
+             "Я би розповів ще один жарт про баги, але він іноді працює, а іноді – ні. 🐞" ,
+             "Чому програмісти ненавидять природу? Бо там забагато багів! 🌳" ,
+             "Після 10 годин дебагу ти розумієш, що проблема – це ти. 🤷‍♂️" ,
+             "Як називається найвеселіший елемент у програмуванні? LOL-кейшен 😆"
+        };
+
+        private Random random = new Random();
+        public override string GetResponse(string message)
+        {
+            if (message.ToLower().Contains("жарт"))
+            {
+                int index = random.Next(jokes.Count);
+                return jokes[index];
+            }
+
+            return base.GetResponse(message);
+        }
+    }
+    public class CombinedResponse : BotResponse
+    {
+        private EmojiResponse emojiResponse = new EmojiResponse();
+        private JokeResponse formalResponse = new JokeResponse();
+
+        public override string GetResponse(string message)
+        {
+            string emojiReply = emojiResponse.GetResponse(message);
+
+            if (emojiReply.Contains("Вибачте"))
+            {
+                return formalResponse.GetResponse(message);
+            }
+
+            return emojiReply;
         }
     }
 }
