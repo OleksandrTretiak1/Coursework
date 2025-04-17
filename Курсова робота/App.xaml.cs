@@ -13,5 +13,18 @@ namespace Курсова_робота
     /// </summary>
     public partial class App : Application
     {
+        protected override void OnStartup(StartupEventArgs e)
+        {
+            base.OnStartup(e);
+
+            SplashScreen splash = new SplashScreen("ReServant3Done.png");
+            splash.Show(autoClose: true, topMost: true);
+
+            System.Threading.Thread.Sleep(2000); // затримка 2 секунди
+
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+        }
+
     }
 }

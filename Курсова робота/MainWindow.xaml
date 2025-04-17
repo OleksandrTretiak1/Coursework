@@ -8,6 +8,7 @@
         mc:Ignorable="d"
         SizeChanged="Window_SizeChanged"
         Title="Чат-бот готелю" Height="500" Width="400"
+        WindowStartupLocation="CenterScreen"
         Background="{DynamicResource BackgroundBrush}">
 
     <Window.Resources>

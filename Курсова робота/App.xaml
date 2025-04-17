@@ -1,8 +1,7 @@
 ﻿<Application x:Class="Курсова_робота.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:local="clr-namespace:Курсова_робота"
-             StartupUri="MainWindow.xaml">
+             xmlns:local="clr-namespace:Курсова_робота">
     <Application.Resources>
          
     </Application.Resources>

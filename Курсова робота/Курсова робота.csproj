@@ -98,5 +98,8 @@
   <ItemGroup>
     <Resource Include="logo3.ico" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="ReServant3Done.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
