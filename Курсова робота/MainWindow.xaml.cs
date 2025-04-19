@@ -72,7 +72,39 @@ namespace Курсова_робота
             //Loaded += (s, e) => UserInput.Focus(); Якщо нада відразу активувать діалог
         }
 
+        private class CheckInOutInfo
+        {
+            public string GetInfo() => "Час заїзду з 14:00, виїзд до 12:00. 🕒";
+        }
 
+        private class ParkingInfo
+        {
+            public string GetInfo() => "У нас є безкоштовний паркінг для гостей. 🚗";
+        }
+
+        private class PetsInfo
+        {
+            public string GetInfo() => "Ми приймаємо гостей із домашніми тваринами! 🐶🐱";
+        }
+
+        // Обробники подій кнопок
+        private void CheckInOut_Click(object sender, RoutedEventArgs e)
+        {
+            var info = new CheckInOutInfo().GetInfo();
+            ChatHistory.Items.Add("Бот: " + info);
+        }
+
+        private void Parking_Click(object sender, RoutedEventArgs e)
+        {
+            var info = new ParkingInfo().GetInfo();
+            ChatHistory.Items.Add("Бот: " + info);
+        }
+
+        private void Pets_Click(object sender, RoutedEventArgs e)
+        {
+            var info = new PetsInfo().GetInfo();
+            ChatHistory.Items.Add("Бот: " + info);
+        }
 
         private void Window_SizeChanged(object sender, SizeChangedEventArgs e)
         {

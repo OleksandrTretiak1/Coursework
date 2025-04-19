@@ -69,14 +69,21 @@
                 <ColumnDefinition Width="*"/>
                 <ColumnDefinition Width="Auto"/>
             </Grid.ColumnDefinitions>
-
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
-                <Button Content="💾 Зберегти" Style="{StaticResource CustomButtonStyle}" Click="SaveChatHistory_Click"/>
-                <Button Content="📂 Завантажити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="LoadChatHistory_Click"/>
-                <Button Content="🗑 Очистити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="ClearChatHistory_Click"/>
+            
+            <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
+                <StackPanel Orientation="Horizontal">
+                    <Button Content="💾 Зберегти" Style="{StaticResource CustomButtonStyle}" Click="SaveChatHistory_Click"/>
+                    <Button Content="📂 Завантажити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="LoadChatHistory_Click"/>
+                    <Button Content="🗑 Очистити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="ClearChatHistory_Click"/>
+                </StackPanel>
+                 
+                <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
+                     <Button Content="Заїзд/Виїзд" Style="{StaticResource CustomButtonStyle}" Click="CheckInOut_Click"/>
+                     <Button Content="Паркінг" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="Parking_Click"/>
+                     <Button Content="Тварини" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="Pets_Click"/>
+                </StackPanel>
             </StackPanel>
-
-            <!-- Кнопка перемикання теми -->
+                        <!-- Кнопка перемикання теми -->
             <Button Name="ThemeToggleButton" Content="🌙" Width="35" Height="35" Click="ThemeToggleButton_Click"
                     Grid.Column="1"
                     Background="Transparent" BorderThickness="0"
