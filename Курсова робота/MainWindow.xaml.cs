@@ -30,12 +30,30 @@ namespace Курсова_робота
                 Resources["BackgroundBrush"] = new SolidColorBrush(Color.FromRgb(34, 34, 34));
                 Resources["ForegroundBrush"] = new SolidColorBrush(Color.FromRgb(255, 255, 255)); 
                 ThemeToggleButton.Content = "☀️";
+
+                Style darkStyle = (Style)FindResource("DarkButtonStyle");
+
+                SaveButton.Style = darkStyle;
+                LoadButton.Style = darkStyle;
+                ClearButton.Style = darkStyle;
+                CheckInOutButton.Style = darkStyle;
+                ParkingButton.Style = darkStyle;
+                PetsButton.Style = darkStyle;
             }
             else
             {
                 Resources["BackgroundBrush"] = new SolidColorBrush(Color.FromRgb(255, 255, 255)); 
                 Resources["ForegroundBrush"] = new SolidColorBrush(Color.FromRgb(0, 0, 0)); 
                 ThemeToggleButton.Content = "🌙";
+
+                Style lightStyle = (Style)FindResource("LightButtonStyle");
+
+                SaveButton.Style = lightStyle;
+                LoadButton.Style = lightStyle;
+                ClearButton.Style = lightStyle;
+                CheckInOutButton.Style = lightStyle;
+                ParkingButton.Style = lightStyle;
+                PetsButton.Style = lightStyle;
             }
         }
 

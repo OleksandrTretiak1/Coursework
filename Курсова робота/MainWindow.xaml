@@ -55,6 +55,26 @@
                 </Trigger>
             </Style.Triggers>
         </Style>
+
+        <Style x:Key="LightButtonStyle" BasedOn="{StaticResource CustomButtonStyle}" TargetType="Button">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+        </Style>
+
+        <Style x:Key="DarkButtonStyle" BasedOn="{StaticResource CustomButtonStyle}" TargetType="Button">
+            <Setter Property="Background" Value="Black"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Style.Triggers>
+                <Trigger Property="IsMouseOver" Value="True">
+                    <Setter Property="Background" Value="#333333"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Trigger>
+                <Trigger Property="IsPressed" Value="True">
+                    <Setter Property="Background" Value="#555555"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+
     </Window.Resources>
     
     <Grid Margin="10">
@@ -72,15 +92,15 @@
             
             <StackPanel Orientation="Vertical" HorizontalAlignment="Left">
                 <StackPanel Orientation="Horizontal">
-                    <Button Content="💾 Зберегти" Style="{StaticResource CustomButtonStyle}" Click="SaveChatHistory_Click"/>
-                    <Button Content="📂 Завантажити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="LoadChatHistory_Click"/>
-                    <Button Content="🗑 Очистити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="ClearChatHistory_Click"/>
+                    <Button x:Name="SaveButton" Content="💾 Зберегти" Style="{StaticResource CustomButtonStyle}" Click="SaveChatHistory_Click"/>
+                    <Button x:Name="LoadButton" Content="📂 Завантажити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="LoadChatHistory_Click"/>
+                    <Button x:Name="ClearButton" Content="🗑 Очистити" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="ClearChatHistory_Click"/>
                 </StackPanel>
                  
                 <StackPanel Orientation="Horizontal" Margin="0,5,0,0">
-                     <Button Content="Заїзд/Виїзд" Style="{StaticResource CustomButtonStyle}" Click="CheckInOut_Click"/>
-                     <Button Content="Паркінг" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="Parking_Click"/>
-                     <Button Content="Тварини" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="Pets_Click"/>
+                     <Button x:Name="CheckInOutButton" Content="Заїзд/Виїзд" Style="{StaticResource CustomButtonStyle}" Click="CheckInOut_Click"/>
+                     <Button x:Name="ParkingButton" Content="Паркінг" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="Parking_Click"/>
+                     <Button x:Name="PetsButton" Content="Тварини" Style="{StaticResource CustomButtonStyle}" Margin="5,0,0,0" Click="Pets_Click"/>
                 </StackPanel>
             </StackPanel>
                         <!-- Кнопка перемикання теми -->
