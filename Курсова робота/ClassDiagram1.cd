@@ -1,2 +1,57 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<ClassDiagram /> 
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="Курсова_робота.MainWindow">
+    <Position X="12.75" Y="1.25" Width="1.5" />
+    <NestedTypes>
+      <Class Name="Курсова_робота.MainWindow.CheckInOutInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Курсова_робота.MainWindow.ParkingInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+      <Class Name="Курсова_робота.MainWindow.PetsInfo" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>MainWindow.xaml.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAEAEIABABQCAAAAAIIAAAAACBAAAAAAAAACCEAAAgA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="Курсова_робота.BotResponse" Collapsed="true">
+    <Position X="8" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Курсова_робота.EmojiResponse">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Курсова_робота.JokeResponse">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Курсова_робота.CombinedResponse">
+    <Position X="8" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAA=</HashCode>
+      <FileName>MainWindow.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
