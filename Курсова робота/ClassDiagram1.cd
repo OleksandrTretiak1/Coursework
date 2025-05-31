@@ -1,7 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
-  <Class Name="Курсова_робота.MainWindow">
-    <Position X="12.75" Y="1.25" Width="1.5" />
+  <Class Name="Курсова_робота.App">
+    <Position X="17" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>App.xaml.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="Курсова_робота.MainWindow" BaseTypeListCollapsed="true">
+    <Position X="18.75" Y="0.5" Width="1.5" />
     <NestedTypes>
       <Class Name="Курсова_робота.MainWindow.CheckInOutInfo" Collapsed="true">
         <TypeIdentifier>
@@ -23,33 +30,26 @@
       <HashCode>AAEAEIABABQCAAAAAIIAAAAACBAAAAAAAAACCEAAAgA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
+    <Lollipop Position="0.2" Collapsed="true" />
   </Class>
-  <Class Name="Курсова_робота.BotResponse" Collapsed="true">
-    <Position X="8" Y="1.25" Width="1.5" />
+  <Class Name="Курсова_робота.BotResponse">
+    <Position X="13.5" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсова_робота.EmojiResponse">
-    <Position X="10.25" Y="2.5" Width="1.5" />
+    <Position X="12.25" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="Курсова_робота.JokeResponse">
-    <Position X="5.75" Y="2.5" Width="1.5" />
+    <Position X="14.75" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAEAAAAAAQAAAAAAAA=</HashCode>
-      <FileName>MainWindow.xaml.cs</FileName>
-    </TypeIdentifier>
-  </Class>
-  <Class Name="Курсова_робота.CombinedResponse">
-    <Position X="8" Y="2.5" Width="1.5" />
-    <TypeIdentifier>
-      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAA=</HashCode>
       <FileName>MainWindow.xaml.cs</FileName>
     </TypeIdentifier>
   </Class>

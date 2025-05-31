@@ -57,7 +57,11 @@ namespace Курсова_робота
             }
         }
 
-        private BotResponse botResponse = new CombinedResponse();
+        private List<BotResponse> botResponses = new List<BotResponse>
+        {
+            new EmojiResponse(),
+            new JokeResponse()
+        };
         public MainWindow()
         {
             InitializeComponent();
@@ -170,7 +174,16 @@ namespace Курсова_робота
                 ChatHistory.Items.Add($"Ви: {userMessage}");
                 UserInput.Clear();
 
-                string response = botResponse.GetResponse(userMessage);
+                string response = null;
+                foreach (var bot in botResponses)
+                {
+                    response = bot.GetResponse(userMessage);
+                    if (response != null && !response.StartsWith("Вибачте"))
+                        break;
+                }
+
+                if (string.IsNullOrEmpty(response))
+                    response = "Вибачте, я не розумію ваш запит, спробуйте ще раз.";
 
                 messageCount++;
                 if (messageCount % 3 == 0)
@@ -235,12 +248,9 @@ namespace Курсова_робота
         }
     }
 
-    public class BotResponse
+    public abstract class BotResponse
     {
-        public virtual string GetResponse(string message)
-        {
-            return "Вибачте, я не розумію ваш запит, спробуйте ще раз. 🤔";
-        }
+        public abstract string GetResponse(string message);
     }
     public class EmojiResponse : BotResponse
     {
@@ -304,7 +314,7 @@ namespace Курсова_робота
                     return responses[key];
                 }
             }
-            return base.GetResponse(message);
+            return "Вибачте, я не розумію ваш запит, спробуйте ще раз.";
         }
     }
     public class JokeResponse : BotResponse
@@ -328,24 +338,7 @@ namespace Курсова_робота
                 return jokes[index];
             }
 
-            return base.GetResponse(message);
-        }
-    }
-    public class CombinedResponse : BotResponse
-    {
-        private EmojiResponse emojiResponse = new EmojiResponse();
-        private JokeResponse formalResponse = new JokeResponse();
-
-        public override string GetResponse(string message)
-        {
-            string emojiReply = emojiResponse.GetResponse(message);
-
-            if (emojiReply.Contains("Вибачте"))
-            {
-                return formalResponse.GetResponse(message);
-            }
-
-            return emojiReply;
+            return "Вибачте, я не розумію ваш запит, спробуйте ще раз.";
         }
     }
 }
