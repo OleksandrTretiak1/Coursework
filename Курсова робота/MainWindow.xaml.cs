@@ -304,7 +304,7 @@ namespace Курсова_робота
             { "кондиціонер", "Так, всі наші номери оснащені кондиціонерами. ❄️" }
         };
 
-        public override string GetResponse(string message)
+        public string GetEmojiResponse(string message)
         {
             string lowerMessage = message.ToLower();
             foreach (var key in responses.Keys)
@@ -314,7 +314,12 @@ namespace Курсова_робота
                     return responses[key];
                 }
             }
-            return "Вибачте, я не розумію ваш запит, спробуйте ще раз.";
+            return null;
+        }
+
+        public override string GetResponse(string message)
+        {
+            return GetEmojiResponse(message);
         }
     }
     public class JokeResponse : BotResponse
@@ -330,15 +335,22 @@ namespace Курсова_робота
         };
 
         private Random random = new Random();
+
+        public string GetJoke()
+        {
+            int index = random.Next(jokes.Count);
+            return jokes[index];
+        }
+
         public override string GetResponse(string message)
         {
             if (message.ToLower().Contains("жарт"))
             {
                 int index = random.Next(jokes.Count);
-                return jokes[index];
+                return GetJoke();
             }
 
-            return "Вибачте, я не розумію ваш запит, спробуйте ще раз.";
+            return null;
         }
     }
 }
